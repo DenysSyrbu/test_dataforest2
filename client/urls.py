@@ -8,5 +8,6 @@ urlpatterns = [
     path('create_new_client/success', views.succes_created, name='success'),
     path('detail/<int:pk>/', views.ClientDetailView.as_view(), name='client_detail'),
     path('detail/<int:pk>/update/', views.ClientUpdateView.as_view(), name='client_apdate'),
+    path('', views.client_list_with_searh, name='clients_home'),
 
 ]
