@@ -2,9 +2,8 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 
-
 class Client(models.Model):
-    client_name = models.CharField(max_length=150)
+    client_name = models.CharField(max_length=150, unique=True)
     contact_name = models.CharField(max_length=150)
     client_email = models.EmailField()
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
