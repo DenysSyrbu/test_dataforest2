@@ -11,8 +11,12 @@ class Client(models.Model):
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
 
 
-class Address_datails(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+class AddressDetails(models.Model):
+    client = models.OneToOneField(
+        Client,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
     street_name = models.CharField(max_length=100)
     suburb = models.CharField(max_length=150)
     postcode = models.IntegerField()
