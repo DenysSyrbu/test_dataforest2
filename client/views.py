@@ -1,9 +1,7 @@
 from .forms import ClientForm, SearchClientForm
 from .models import Client
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
-from django.shortcuts import render, HttpResponse
-import operator
-from django.db.models import Q
+from django.views.generic import DetailView, UpdateView, CreateView
+from django.shortcuts import render
 
 
 class ClientView(CreateView):
@@ -15,11 +13,15 @@ class ClientView(CreateView):
 def succes_created(request):
     return render(request, 'client/success.html')
 
+def succes_updated(request, pk):
+    return render(request, 'client/success.html')
+
 
 class ClientUpdateView(UpdateView):
     model = Client
     fields = ['client_name', 'client_email', 'phone_number', 'contact_name', 'state', 'street_name', 'suburb', 'postcode']
     template_name_suffix = '_update_form'
+    success_url = 'update_success'
 
     def form_valid(self, form):
         return super().form_valid(form)
