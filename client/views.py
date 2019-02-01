@@ -18,7 +18,7 @@ def succes_created(request):
 
 class ClientUpdateView(UpdateView):
     model = Client
-    fields = ['client_name', 'client_email', 'phone_number']
+    fields = ['client_name', 'client_email', 'phone_number', 'contact_name', 'state', 'street_name', 'suburb', 'postcode']
     template_name_suffix = '_update_form'
 
     def form_valid(self, form):
@@ -29,24 +29,6 @@ class ClientDetailView(DetailView):
 
     model = Client
 
-
-# class ClientListView(ListView):
-#     model = Client
-#     form_class = SearchClientForm
-#     template_name = 'client/clients_view.html'
-#     context_object_name = 'clients'
-#     paginate_by = 10
-#
-#     def get_queryset(self):
-#         try:
-#             name = self.kwargs['client_name']
-#         except:
-#             name = ''
-#         if name != '':
-#             object_list = self.model.objects.filter(client_name__icontains=name)
-#         else:
-#             object_list = self.model.objects.all()
-#         return object_list
 
 
 def client_list_with_searh(request):

@@ -7,7 +7,7 @@ from django.core.validators import RegexValidator
 class ClientForm(ModelForm):
     class Meta:
         model = Client
-        fields = ['client_name', 'client_email', 'phone_number']
+        fields = ['client_name', 'client_email', 'phone_number', 'contact_name', 'state', 'street_name', 'suburb', 'postcode']
 
 
 class SearchClientForm(forms.Form):
